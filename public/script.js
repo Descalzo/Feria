@@ -1,7 +1,7 @@
 
 //const SERVER_URL = 'http://192.168.1.231:8080';
-const SERVER_URL = 'https://5eaa-62-36-29-136.ngrok-free.app';
-//const SERVER_URL = 'https://feria-production.up.railway.app';
+//const SERVER_URL = 'https://5eaa-62-36-29-136.ngrok-free.app';
+const SERVER_URL = 'https://feria-production.up.railway.app';
 
 
 
