@@ -1,0 +1,377 @@
+[
+    {
+      "categoria": "Bebidas",
+      "items": [
+        {
+          "id": "1",
+          "nombre": "Refresco",
+          "precio_socio": 1.44,
+          "precio_familiar": 1.8,
+          "precio_admin": 1.26
+        },
+        {
+          "id": "2",
+          "nombre": "Cerveza",
+          "precio_socio": 1.44,
+          "precio_familiar": 1.8,
+          "precio_admin": 1.26
+        },
+        {
+          "id": "3",
+          "nombre": "Jarra de rebujito",
+          "precio_socio": 8.4,
+          "precio_familiar": 10.5,
+          "precio_admin": 7.35
+        },
+        {
+          "id": "4",
+          "nombre": "½ Manzanilla",
+          "precio_socio": 1.6,
+          "precio_familiar": 2,
+          "precio_admin": 1.4
+        },
+        {
+          "id": "5",
+          "nombre": "Copa de vino",
+          "precio_socio": 2,
+          "precio_familiar": 2.5,
+          "precio_admin": 1.75
+        },
+        {
+          "id": "6",
+          "nombre": "Agua mineral",
+          "precio_socio": 0.8,
+          "precio_familiar": 1,
+          "precio_admin": 0.7
+        },
+        {
+          "id": "7",
+          "nombre": "Botella Fino Tío Pepe",
+          "precio_socio": 8.4,
+          "precio_familiar": 10.5,
+          "precio_admin": 7.35
+        },
+        {
+          "id": "8",
+          "nombre": "Botella Tinto",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "9",
+          "nombre": "Caldo de puchero",
+          "precio_socio": 2,
+          "precio_familiar": 2.5,
+          "precio_admin": 1.75
+        },
+        {
+          "id": "10",
+          "nombre": "Café",
+          "precio_socio": 1.12,
+          "precio_familiar": 1.4,
+          "precio_admin": 0.98
+        },
+        {
+          "id": "11",
+          "nombre": "Combinado normal",
+          "precio_socio": 4.8,
+          "precio_familiar": 6,
+          "precio_admin": 4.2
+        },
+        {
+          "id": "12",
+          "nombre": "Combinado premium",
+          "precio_socio": 6,
+          "precio_familiar": 7.5,
+          "precio_admin": 5.25
+        }
+      ],
+      "id": "a200"
+    },
+    {
+      "categoria": "Chacinas y Mariscos",
+      "items": [
+        {
+          "id": "13",
+          "nombre": "Jamón ibérico bellota (100 g)",
+          "precio_socio": 14.8,
+          "precio_familiar": 18.5,
+          "precio_admin": 12.95
+        },
+        {
+          "id": "14",
+          "nombre": "Caña de lomo ibérico B. (100 g)",
+          "precio_socio": 12,
+          "precio_familiar": 15,
+          "precio_admin": 10.5
+        },
+        {
+          "id": "15",
+          "nombre": "Queso curado extra (150 g)",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "16",
+          "nombre": "Salchichón ibérico bellota",
+          "precio_socio": 6.4,
+          "precio_familiar": 8,
+          "precio_admin": 5.6
+        },
+        {
+          "id": "17",
+          "nombre": "Tostada de jamón/salmorejo",
+          "precio_socio": 8,
+          "precio_familiar": 10,
+          "precio_admin": 7
+        },
+        {
+          "id": "18",
+          "nombre": "Tostada anchoas cantábrico",
+          "precio_socio": 10,
+          "precio_familiar": 12.5,
+          "precio_admin": 8.75
+        },
+        {
+          "id": "19",
+          "nombre": "Gambas blancas de Huelva",
+          "precio_socio": 16,
+          "precio_familiar": 20,
+          "precio_admin": 14
+        },
+        {
+          "id": "20",
+          "nombre": "Langostinos tigres",
+          "precio_socio": 14,
+          "precio_familiar": 17.5,
+          "precio_admin": 12.25
+        },
+        {
+          "id": "21",
+          "nombre": "Almejas",
+          "precio_socio": 11.2,
+          "precio_familiar": 14,
+          "precio_admin": 9.8
+        },
+        {
+          "id": "22",
+          "nombre": "Gambas al ajillo",
+          "precio_socio": 11.2,
+          "precio_familiar": 14,
+          "precio_admin": 9.8
+        },
+        {
+          "id": "23",
+          "nombre": "Almendras fritas",
+          "precio_socio": 4,
+          "precio_familiar": 5,
+          "precio_admin": 3.5
+        },
+        {
+          "id": "24",
+          "nombre": "Docena de pastelitos",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        }
+      ],
+      "id": "7b89"
+    },
+    {
+      "categoria": "Pescados",
+      "items": [
+        {
+          "id": "25",
+          "nombre": "Adobo frito",
+          "precio_socio": 8.8,
+          "precio_familiar": 11,
+          "precio_admin": 7.7
+        },
+        {
+          "id": "26",
+          "nombre": "Boquerones fritos",
+          "precio_socio": 8.8,
+          "precio_familiar": 11,
+          "precio_admin": 7.7
+        },
+        {
+          "id": "27",
+          "nombre": "Chocos fritos",
+          "precio_socio": 8.8,
+          "precio_familiar": 11,
+          "precio_admin": 7.7
+        },
+        {
+          "id": "28",
+          "nombre": "Rosada frita",
+          "precio_socio": 8.8,
+          "precio_familiar": 11,
+          "precio_admin": 7.7
+        },
+        {
+          "id": "29",
+          "nombre": "Frito variado",
+          "precio_socio": 12.8,
+          "precio_familiar": 16,
+          "precio_admin": 11.2
+        },
+        {
+          "id": "30",
+          "nombre": "Croquetas de cocido",
+          "precio_socio": 8,
+          "precio_familiar": 10,
+          "precio_admin": 7
+        },
+        {
+          "id": "31",
+          "nombre": "Bacalao frito",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "32",
+          "nombre": "Calamares del campo",
+          "precio_socio": 7.2,
+          "precio_familiar": 9,
+          "precio_admin": 6.3
+        },
+        {
+          "id": "33",
+          "nombre": "Pavías",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "34",
+          "nombre": "Berenjenas fritas/salmorejo",
+          "precio_socio": 6.4,
+          "precio_familiar": 8,
+          "precio_admin": 5.6
+        },
+        {
+          "id": "35",
+          "nombre": "Pimientos fritos",
+          "precio_socio": 5.6,
+          "precio_familiar": 7,
+          "precio_admin": 4.9
+        },
+        {
+          "id": "36",
+          "nombre": "Revuelto espárragos trigueros",
+          "precio_socio": 8.8,
+          "precio_familiar": 11,
+          "precio_admin": 7.7
+        },
+        {
+          "id": "37",
+          "nombre": "Revuelto bacalao dorado",
+          "precio_socio": 8.8,
+          "precio_familiar": 11,
+          "precio_admin": 7.7
+        }
+      ],
+      "id": "d457"
+    },
+    {
+      "categoria": "Carnes y Varios",
+      "items": [
+        {
+          "id": "38",
+          "nombre": "Solomillo cerdo en salsa",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "39",
+          "nombre": "Presa a la plancha",
+          "precio_socio": 12,
+          "precio_familiar": 15,
+          "precio_admin": 10.5
+        },
+        {
+          "id": "40",
+          "nombre": "Lagartito ibérico",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "41",
+          "nombre": "Entrecot de ternera",
+          "precio_socio": 14.8,
+          "precio_familiar": 18.5,
+          "precio_admin": 12.95
+        },
+        {
+          "id": "42",
+          "nombre": "Solomillo de ternera",
+          "precio_socio": 12.8,
+          "precio_familiar": 16,
+          "precio_admin": 11.2
+        },
+        {
+          "id": "43",
+          "nombre": "Flamenquín cordobés",
+          "precio_socio": 11.2,
+          "precio_familiar": 14,
+          "precio_admin": 9.8
+        },
+        {
+          "id": "44",
+          "nombre": "Cachopo (350 g)",
+          "precio_socio": 12.8,
+          "precio_familiar": 16,
+          "precio_admin": 11.2
+        },
+        {
+          "id": "45",
+          "nombre": "Atún plancha",
+          "precio_socio": 12,
+          "precio_familiar": 15,
+          "precio_admin": 10.5
+        },
+        {
+          "id": "46",
+          "nombre": "Pollo frito",
+          "precio_socio": 8,
+          "precio_familiar": 10,
+          "precio_admin": 7
+        },
+        {
+          "id": "47",
+          "nombre": "Carrillera a la cerveza",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "48",
+          "nombre": "Tortilla de patatas",
+          "precio_socio": 6.4,
+          "precio_familiar": 8,
+          "precio_admin": 5.6
+        },
+        {
+          "id": "49",
+          "nombre": "Montaditos/Pinchitos (5 u)",
+          "precio_socio": 9.6,
+          "precio_familiar": 12,
+          "precio_admin": 8.4
+        },
+        {
+          "id": "50",
+          "nombre": "Plato del día",
+          "precio_socio": 6.4,
+          "precio_familiar": 8,
+          "precio_admin": 5.6
+        }
+      ],
+      "id": "fc42"
+    }
+	]
+

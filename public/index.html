@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Feria de Abril - Plataforma</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Login y Registro -->
+  <div class="container active" id="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form id="login-form">
+      <input type="text" id="login-user" placeholder="Correo o alias" required>
+      <input type="password" id="login-password" placeholder="Contraseña" required>
+      <button type="submit">Acceder</button>
+    </form>
+  
+  </div>
+  
+  <div class="container" id="register-container">
+    <h2>Registro</h2>
+    <form id="register-form">
+      <input type="email" id="register-email" placeholder="Correo electrónico" required>
+      <input type="text" id="alias" placeholder="Alias o nombre" required>
+      <input type="password" id="register-password" placeholder="Contraseña" required>
+      <select id="role">
+        <option value="socio">Socio</option>
+        <option value="familiar">Familiar</option>
+        <option value="invitado">Invitado</option>
+        <option value="portero">Portero</option>
+        <option value="restaurante">Restaurante</option>
+		<option value="camarero">Camarero</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <button type="submit">Registrarse</button>
+    </form>
+    <p class="form-link">¿Ya tienes cuenta? <a href="#" id="to-login">Inicia sesión</a></p>
+  </div>
+  
+  <!-- Aplicación Principal -->
+  <div id="main-app" style="display:none; width: 100%; max-width: 400px;">
+    <!-- Header -->
+    <div id="header">
+      <button id="btn-home">Inicio</button>
+      <button id="btn-logout">Cerrar Sesión</button>
+    </div>
+    
+    <div id="content">
+      <!-- Menú de Opciones -->
+      <div class="container active" id="menu-container">
+        <h2>Tipo: <span id="user-type"></span></h2>
+        <div class="menu-grid">
+          <!-- Botones generados dinámicamente según el rol -->
+        </div>
+      </div>
+      
+	<div id="carta-page" class="container">
+	  <h2>Carta del Restaurante</h2>
+	  <div id="carta-lista" class="restaurant-box-menu"></div>
+	</div>
+
+
+	  
+      <!-- Vista de QR de Entrada -->
+      <div class="container" id="entry-qr-page">
+        <h2>Código QR de Entrada</h2>
+        <div id="entry-qr-code"></div>
+        <p style="text-align:center; color: white;">Tu código único de entrada</p>
+        <p id="user-role-display"></p>
+      </div>
+      
+      
+	<!-- Dashboard Restaurante -->
+	<div class="container" id="dashboard">
+	  <h2>📊 Dashboard del Restaurante</h2>
+	  <p><strong>Total recargas realizadas:</strong> <span id="total-recargas">—</span></p>
+	  <p><strong>Total ventas:</strong> <span id="total-ventas">—</span></p>
+
+	<div id="restaurant-box-transactions" class="restaurant-box-transactions">
+	  <h3>👤 Socios</h3>
+	  <ul id="resumen-socios"></ul>
+
+	  <h3>👪 Familiares</h3>
+	  <ul id="resumen-familiares"></ul>
+	  </div>
+	</div>
+	
+	
+
+	<!-- Dashboard Portero -->
+	<div class="container" id="dashboard-portero">
+	  <h2>📋 Registro de Invitados Escaneados</h2>
+	  
+	  <ul id="lista-entradas-portero" style="max-height: 300px; overflow-y: auto;" class="portero-box-menu"></ul>
+	</div>
+
+
+      
+      
+	<!-- Escáner QR -->
+	<div class="container" id="scanner-page">
+	  <h2>Escanear Código</h2>
+	  
+	  <!-- Aquí aparece la cámara -->
+	  <div id="reader" style="width: 100%; max-width: 300px; margin: 0 auto; border: 2px solid #ccc; border-radius: 10px;"></div>
+
+	  <!-- Resultado del escaneo -->
+	  <div id="resultado" style="margin-top: 10px; text-align: center; color: white;"></div>
+	</div>
+
+      
+      <!-- Chat -->
+	  
+      <div class="container" id="chat-page">
+        <h2>Chat</h2>
+        <div id="chat-messages"></div>
+        <textarea id="chat-input" placeholder="Escribe tu mensaje" rows="3"></textarea>
+        <button onclick="enviarMensaje()">Enviar</button>
+      </div>
+      
+	  
+<!-- Eventos (Submenú para Administrador) -->
+<div class="container" id="eventos-page">
+  <h2>Eventos</h2>
+  <div id="eventos-menu" class="menu-buttons">
+    <button onclick="mostrarOpcion('registrar-evento-page')">Registrar Evento</button>
+    <button onclick="mostrarOpcion('ver-eventos-page'); cargarEventos();">Ver Eventos</button>
+  </div>
+</div>
+
+<!-- Registrar Evento (Solo para Admin) -->
+<div class="container" id="registrar-evento-page">
+  <h2>Registrar Evento</h2>
+  <div id="formulario-evento">
+    <form onsubmit="event.preventDefault(); crearEvento();">
+      <label>Día:</label>
+      <input type="date" id="nuevo-evento-dia" required>
+      <label>Hora:</label>
+      <input type="time" id="nuevo-evento-hora" required>
+      <label>Evento:</label>
+      <input type="text" id="nuevo-evento-descripcion" placeholder="Descripción del evento" required>
+      <button type="submit">Publicar Evento</button>
+    </form>
+  </div>
+</div>
+
+<!-- Ver Eventos (Para Admin, Socios y Familiares) -->
+<div class="container" id="ver-eventos-page">
+  <h2>Eventos Registrados</h2>
+  <div id="ver-eventos-lista" class="eventos-box-menu"></div>
+</div>
+	
+	<!-- Información del Tiempo -->
+	<div class="container" id="tiempo-page">
+	  <h2>Información Meteorológica</h2>
+	  <div id="tiempo-actual">Cargando tiempo actual...</div>
+	  <h3>Próximos días</h3>
+	  <div id="tiempo-pronostico"></div>
+	</div>
+
+
+	  
+      <!-- Submenú Wallet -->
+      <div class="container" id="wallet-menu">
+        <h2>Opciones de Wallet</h2>
+        <div class="menu-buttons">
+          <button onclick="mostrarOpcion('wallet-page')">Monedero</button>
+          <button onclick="mostrarOpcion('payments-page')">Pago</button>
+          <button onclick="mostrarOpcion('recarga-familiar-page'); cargarFamiliaresParaRecarga();">Recargar Familiar</button>
+        </div>
+      </div>
+      
+      <!-- Monedero Virtual -->
+      <div class="container" id="wallet-page">
+        <h2>Monedero Virtual</h2>
+        <div class="saldo-destacado">
+          <span>Saldo actual:</span>
+          <div class="saldo-cantidad" id="wallet-balance-container">0 €</div>
+        </div>
+		<h3>Historial de Transacciones</h3>
+		<div id="wallet-transactions" class="wallet-box-transactions">
+		  <!-- Aquí se inyectarán los movimientos -->
+		</div>
+      </div>
+      
+      <!-- Pagos -->
+	<div id="payments-page" class="container">
+	  <button class="back-button">Atrás</button>
+	  <form id="payment-form">
+		<input type="number" id="payment-amount" placeholder="Cantidad a pagar" step="0.01" min="0">
+		<button type="submit">Generar QR de Pago</button>
+	  </form>
+	  <div id="payment-qr"></div>
+	  <p id="resultado-pago"></p>
+	</div>
+      
+      <!-- Recarga a Familiar -->
+      <div class="container" id="recarga-familiar-page">
+        <h2>Recargar Familiar</h2>
+        <form id="recarga-familiar-form">
+          <select id="select-familiar" required>
+            <option value="">Seleccione un familiar</option>
+          </select>
+          <input type="number" id="familiar-recarga-amount" placeholder="Cantidad a transferir" required>
+          <button type="submit">Transferir</button>
+        </form>
+      </div>
+      
+      <!-- Submenú Administración -->
+      <div class="container" id="admin-menu">
+        <h2>Administración</h2>
+        <div id="admin-buttons">
+          <!-- Botones generados dinámicamente según permisos -->
+        </div>
+      </div>
+	  
+	   <!-- Submenú Administración Restaurante-->
+	  <div id="gestionar-camareros-page" class="container">
+	    <h2>Gestión de Camareros</h2>
+	    <button onclick="mostrarOpcion('formulario-camarero')">Añadir Camarero</button>
+	    <div id="camareros-list"></div>
+	  </div>
+	  
+	
+	
+	<!-- Añadir Camarero (Restaurante) -->
+	<div class="container" id="formulario-camarero">
+	  <form id="formulario-camarero-form">
+		<input type="email" id="nuevoCamareroEmail" placeholder="Correo del camarero" required>
+		<input type="text" id="nuevoCamareroAlias" placeholder="Alias del camarero" required>
+		<input type="password" id="nuevoCamareroPassword" placeholder="Contraseña" required>
+		<button type="submit">Registrar</button>
+	  </form>
+	</div>
+
+
+      
+      <!-- Panel de Administración -->
+      <div class="container" id="admin-page">
+        <h2>Panel de Administración</h2>
+        <h3>Usuarios</h3>
+        <div id="admin-users" class="admin-box-menu"></div>
+      </div>
+      
+      <!-- Añadir Usuario (Admin) -->
+      <div class="container" id="add-user-page">
+        <h2>Añadir Usuario</h2>
+        <form id="add-user-form">
+          <input type="email" id="new-user-email" placeholder="Correo electrónico" required>
+          <input type="text" id="new-user-alias" placeholder="Alias o nombre" required>
+          <input type="password" id="new-user-password" placeholder="Contraseña" required>
+          <select id="new-user-role">
+            <option value="socio">Socio</option>
+			<option value="restaurante">Restaurante</option>
+            <option value="portero">Portero</option>
+			<option value="admin">Administrador</option>
+          </select>
+          <button type="submit">Añadir Usuario</button>
+        </form>
+      </div>
+      
+      <!-- Ver Socios (Admin) -->
+      <div class="container" id="view-socios-page">
+        <h2>Socios Agregados</h2>
+        <div id="socios-list" class="socios-box-menu"></div>
+      </div>
+      
+      <!-- Añadir Familiar (Socio) -->
+      <div class="container" id="add-familiar-page">
+        <h2>Añadir Familiar</h2>
+        <form id="add-familiar-form">
+          <input type="email" id="new-familiar-email" placeholder="Correo electrónico" required>
+          <input type="text" id="new-familiar-alias" placeholder="Alias o nombre" required>
+          <input type="password" id="new-familiar-password" placeholder="Contraseña" required>
+          <button type="submit">Añadir Familiar</button>
+        </form>
+      </div>
+      
+      <!-- Añadir Invitado (Socio) -->
+      <div class="container" id="add-invited-page">
+        <h2>Añadir Invitado</h2>
+        <form id="add-invited-form">
+          <input type="email" id="new-invited-email" placeholder="Correo electrónico" required>
+          <input type="text" id="new-invited-alias" placeholder="Alias o nombre" required>
+          <input type="password" id="new-invited-password" placeholder="Contraseña" required>
+          <button type="submit">Añadir Invitado</button>
+        </form>
+      </div>
+      
+      <!-- Ver Familiares (Socio) -->
+      <div class="container" id="view-familiares-page">
+        <h2>Familiares Agregados</h2>
+        <div id="familiares-list" class="user-list"></div>
+      </div>
+      
+      <!-- Ver Invitados (Socio) -->
+      <div class="container" id="view-invited-page">
+        <h2>Invitados Agregados</h2>
+        <div id="invitados-list" class="user-list"></div>
+      </div>
+      
+      <!-- Vista Wallet Restaurante -->
+      <div class="container" id="wallet-restaurante">
+        <h2>Gestión de Monedero</h2>
+        <div class="menu-buttons">
+          <button onclick="mostrarSeccionWallet('extracto-recargas')">Consulta de Recargas</button>
+          <button onclick="mostrarSeccionWallet('extracto-ventas')">Consulta de Ventas</button>
+        </div>
+
+        <div id="extracto-recargas" style="margin-top:20px; display:none;">
+          <h3>Recargas Realizadas</h3>
+          <div id="lista-recargas" class="wallet-box-transactions"></div>
+        </div>
+
+        <div id="extracto-ventas" style="margin-top:20px; display:none;">
+          <h3>Ventas Realizadas</h3>
+          <div id="lista-ventas" class="wallet-box-transactions"></div>
+        </div>
+      </div>
+      
+      <!-- Recarga (Restaurante) -->
+      <div class="container" id="recarga-page">
+        <h2>Recargar Socios</h2>
+        <form id="recarga-form">
+          <select id="recarga-socio-select" required>
+            <option value="">Seleccione un socio</option>
+          </select>
+          <input type="number" id="recarga-amount" placeholder="Cantidad a recargar" required>
+          <button type="submit">Recargar</button>
+        </form>
+        <div id="recarga-socios-list" class="user-list"></div>
+      </div>
+	  
+		<div id="submenu-restaurante" class="container">
+		  <h2>Gestión del Restaurante</h2>
+		  <div class="menu-buttons">
+			<button onclick="mostrarOpcion('gestionar-camareros-page'); prepararVistaGestionCamareros();">
+			  Camareros
+			</button>
+		  </div>
+		</div>
+
+      
+      <!-- Esquema de Relaciones -->
+      <div class="container" id="relaciones-page">
+        <h2>Relaciones de Usuarios</h2>
+        <div id="esquema-usuarios" class="relationship-diagram"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Vista para Camarero -->
+<div class="container" id="camarero-page">
+  <h2>Panel de Camarero</h2>
+  <div class="menu-buttons">
+    <button onclick="mostrarOpcion('scanner-page')">Escanear QR de Pago</button>
+    <button onclick="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+  <!-- Reutilizamos el contenedor del escáner -->
+  <div id="scanner-page" class="container" style="display: none;">
+    <h2>Escanear Código de Pago</h2>
+    <div id="reader" style="width: 100%; max-width: 300px; margin: 0 auto; border: 2px solid #ccc; border-radius: 10px;"></div>
+    <div id="resultado" style="margin-top: 10px; text-align: center; color: white;"></div>
+  </div>
+</div>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "backend_feria",
+  "version": "1.0.0",
+  "main": "importarCarta.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Descalzo/Feria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Descalzo/Feria/issues"
+  },
+  "homepage": "https://github.com/Descalzo/Feria#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.13.1"
+  }
+}
