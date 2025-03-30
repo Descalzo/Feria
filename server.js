@@ -7,8 +7,6 @@ const PORT = process.env.PORT || 8080;
 
 console.log('🔐 Conectando a:', process.env.MONGO_URI);
 
-
-mongoose.connect(process.env.MONGO_URI);
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -17,9 +15,6 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch((err) => {
   console.error('❌ Error conectando a MongoDB:', err);
 });
-
-
-require('./config/db');
 
 app.use(cors());
 app.use(express.json());
@@ -37,16 +32,7 @@ app.use('/mensajes', require('./routes/mensaje.routes'));
 app.use('/eventos', require('./routes/eventos.routes'));
 app.use('/carta', require('./routes/carta.routes'));
 
-
-
-//app.get('/', (req, res) => {
-//  res.send('Servidor de la caseta funcionando 🎉');
-//});
-
-
 app.listen(PORT, () => console.log(`🚀 Servidor activo en http://localhost:${PORT}`));
-
-
 
 app.post('/procesarTransaccionPendientePorCustomId/:customId', async (req, res) => {
   try {
@@ -96,6 +82,10 @@ app.post('/procesarTransaccionPendientePorCustomId/:customId', async (req, res) 
     await pago.save();
     await venta.save();
     
+    transaccionPendiente.estado = 'procesada';
+    await transaccionPendiente.save();
+    // o bien, eliminarla:
+    // await TransaccionPendiente.deleteOne({ customId });
 
     return res.status(200).json({
       message: 'Transacción por customId procesada correctamente',
