@@ -27,6 +27,7 @@ app.use(express.static('public'));
 
 const TransaccionPendiente = require('./models/transaccionPendiente.model');
 const Transaccion = require('./models/transaccion.model');
+const Usuario = require('./models/usuario.model');
 
 app.use('/usuarios', require('./routes/usuario.routes'));
 app.use('/entradas', require('./routes/entrada.routes'));
@@ -80,6 +81,18 @@ app.post('/procesarTransaccionPendientePorCustomId/:customId', async (req, res) 
       customId
     });
 
+    const usuario = await Usuario.findOne({ email: transaccionPendiente.de });
+    const restaurante = await Usuario.findOne({ email: transaccionPendiente.restauranteEmail });
+
+    if (!usuario || !restaurante) {
+      return res.status(404).json({ error: 'Usuario o restaurante no encontrado' });
+    }
+
+    usuario.balance = (usuario.balance || 0) - transaccionPendiente.cantidad;
+    restaurante.balance = (restaurante.balance || 0) + transaccionPendiente.cantidad;
+
+    await usuario.save();
+    await restaurante.save();
     await pago.save();
     await venta.save();
     
