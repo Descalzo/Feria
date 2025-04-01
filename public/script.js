@@ -2038,7 +2038,7 @@ async function iniciarPollingPago() {
         `;
 	
         detenerPollingPago();
-	mostrarAnimacionExito();      
+	    
         pendingTransactionId = null;
         pendingCustomId = null;
       } else {
@@ -2848,33 +2848,5 @@ async function actualizarIconoTiempoSVG() {
   }
 }
 
-
-function mostrarAnimacionExito() {
-    const animationContainer = document.getElementById('confirmation-animation');
-    const icon = document.getElementById('animation-icon');
-    const text = document.getElementById('animation-text');
-    
-    icon.textContent = '✔️'; // V de éxito
-    text.textContent = '¡Pago Aceptado!';
-    animationContainer.style.display = 'block';
-    console.log(`Aqui he entrado`);
-    setTimeout(() => {
-        animationContainer.style.display = 'none'; // Ocultar la animación después de un tiempo
-    }, 2000);
-}
-
-function mostrarAnimacionError() {
-    const animationContainer = document.getElementById('confirmation-animation');
-    const icon = document.getElementById('animation-icon');
-    const text = document.getElementById('animation-text');
-    
-    icon.textContent = '❌'; // X de error
-    text.textContent = 'Pago Denegado';
-    animationContainer.style.display = 'block';
-    
-    setTimeout(() => {
-        animationContainer.style.display = 'none'; // Ocultar la animación después de un tiempo
-    }, 2000);
-}
 
 
