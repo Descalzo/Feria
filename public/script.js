@@ -2028,8 +2028,7 @@ async function iniciarPollingPago() {
 
       if (transaccionConfirmada) {
         const restaurante = users.find(u => u.email === transaccionConfirmada.to);
-	mostrarConfirmacionPago(transaccionConfirmada.amount); 
-        mostrarAnimacionExito();
+
         qrContainer.innerHTML = `
           <div style="text-align: center; color: green; padding: 20px;">
             <h3>✅ Pago confirmado</h3>
@@ -2045,7 +2044,7 @@ async function iniciarPollingPago() {
         console.log(`⏳ Aún no se ha encontrado la transacción con customId ${pendingCustomId}`);
       }
     } catch (err) {
-      mostrarAnimacionError();
+      
       console.error('❌ Error en polling por customId:', err);
     }
   }, 2000);
@@ -2548,7 +2547,7 @@ function iniciarScanner() {
       }
 
       isProcessing = true;
-      mostrarAnimacionExito();
+     
       console.log('✅ QR detectado:', decodedText);
 
       try {
@@ -2653,7 +2652,7 @@ async function procesarInvitado(email) {
       }
 
       const mensaje = `✅ Entrada registrada: ${alias} (${emailSolo}) - Rol: ${usuario.role} - A las ${hora}`;
-      mostrarAnimacionExito();    
+         
       document.getElementById('resultado').innerText = mensaje;
       document.getElementById('resultado').style.color = 'green';
       console.log('✅ Entrada guardada en el servidor');
@@ -2662,7 +2661,7 @@ async function procesarInvitado(email) {
       document.getElementById('resultado').style.color = 'red';
     }
   } catch (err) {
-    mostrarAnimacionError();  
+      
     document.getElementById('resultado').innerText = '❌ Error al registrar entrada: ' + err.message;
     document.getElementById('resultado').style.color = 'red';
     throw err;
@@ -2705,16 +2704,15 @@ async function procesarPagoEscaneado(qrText) {
       document.getElementById('resultado').style.color = 'red';
       return;
     }
-    mostrarConfirmacionPago(data.pago.amount);
-    mostrarAnimacionExito();
+    
+   
     document.getElementById('resultado').innerText = `✅ Pago de ${formatearEuros(data.pago.amount)} confirmado`;
     document.getElementById('resultado').style.color = 'green';
 
     await cargarUsuariosDesdeServidor();
     console.log('✅ Transacción procesada correctamente:', data);
 
-  } catch (err) {
-    mostrarAnimacionError();	  
+  }  
     document.getElementById('resultado').innerText = '❌ Error procesando pago';
     document.getElementById('resultado').style.color = 'red';
     console.error('❌ Error procesando pago:', err);
@@ -2850,38 +2848,3 @@ async function actualizarIconoTiempoSVG() {
 }
 
 
-function mostrarConfirmacionPago(monto) {
-    // Mostrar la cantidad en verde con OK
-    const confirmation = document.getElementById('payment-confirmation');
-    const confirmationAmount = document.getElementById('confirmation-amount');
-    confirmationAmount.textContent = `${monto} €`; // Muestra el monto en grande
-    confirmation.style.display = 'block';
-}
-
-function mostrarAnimacionExito() {
-    const animationContainer = document.getElementById('confirmation-animation');
-    const icon = document.getElementById('animation-icon');
-    const text = document.getElementById('animation-text');
-    
-    icon.textContent = '✔️'; // V de éxito
-    text.textContent = '¡Pago Aceptado!';
-    animationContainer.style.display = 'block';
-    
-    setTimeout(() => {
-        animationContainer.style.display = 'none'; // Ocultar la animación después de un tiempo
-    }, 2000);
-}
-
-function mostrarAnimacionError() {
-    const animationContainer = document.getElementById('confirmation-animation');
-    const icon = document.getElementById('animation-icon');
-    const text = document.getElementById('animation-text');
-    
-    icon.textContent = '❌'; // X de error
-    text.textContent = 'Pago Denegado';
-    animationContainer.style.display = 'block';
-    
-    setTimeout(() => {
-        animationContainer.style.display = 'none'; // Ocultar la animación después de un tiempo
-    }, 2000);
-}
