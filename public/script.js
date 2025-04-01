@@ -2712,7 +2712,7 @@ async function procesarPagoEscaneado(qrText) {
     await cargarUsuariosDesdeServidor();
     console.log('✅ Transacción procesada correctamente:', data);
 
-  }  
+  }  catch (err) {
     document.getElementById('resultado').innerText = '❌ Error procesando pago';
     document.getElementById('resultado').style.color = 'red';
     console.error('❌ Error procesando pago:', err);
