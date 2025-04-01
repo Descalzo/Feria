@@ -2029,13 +2029,7 @@ async function iniciarPollingPago() {
       if (transaccionConfirmada) {
         const restaurante = users.find(u => u.email === transaccionConfirmada.to);
 
-        qrContainer.innerHTML = `
-          <div style="text-align: center; color: green; padding: 20px;">
-            <h3>✅ Pago confirmado</h3>
-            <p>Has pagado ${formatearEuros(transaccionConfirmada.amount)} a ${'Restaurante'}</p>
-            <p>Fecha: ${formatearFecha(transaccionConfirmada.date)}</p>
-          </div>
-        `;
+
 	
         detenerPollingPago();
 	mostrarAnimacionExito();      
