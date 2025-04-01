@@ -1247,36 +1247,3 @@ tr:last-child td {
 }
 
 
-/* Estilo para la cantidad en grande */
-#payment-amount-large {
-    font-size: 4em;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Estilo para la confirmación del pago */
-#payment-confirmation p {
-    font-size: 3em;
-    color: green;
-    font-weight: bold;
-}
-
-/* Animación para la V y la X */
-#confirmation-animation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    animation: fadeInOut 2s ease-in-out;
-}
-
-#confirmation-animation p {
-    margin: 10px;
-    font-weight: bold;
-}
-
-@keyframes fadeInOut {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-}
