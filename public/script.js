@@ -2030,6 +2030,8 @@ async function iniciarPollingPago() {
         const restaurante = users.find(u => u.email === transaccionConfirmada.to);
         qrContainer.innerHTML = `
           <div style="text-align: center; color: green; padding: 20px;">
+	     mostrarConfirmacionPago(transaccionConfirmada.amount); 
+             mostrarAnimacionExito();
             <h3>✅ Pago confirmado</h3>
             <p>Has pagado ${formatearEuros(transaccionConfirmada.amount)} a ${'Restaurante'}</p>
             <p>Fecha: ${formatearFecha(transaccionConfirmada.date)}</p>
@@ -2043,6 +2045,7 @@ async function iniciarPollingPago() {
         console.log(`⏳ Aún no se ha encontrado la transacción con customId ${pendingCustomId}`);
       }
     } catch (err) {
+      mostrarAnimacionError();
       console.error('❌ Error en polling por customId:', err);
     }
   }, 2000);
@@ -2545,6 +2548,7 @@ function iniciarScanner() {
       }
 
       isProcessing = true;
+      mostrarAnimacionExito();
       console.log('✅ QR detectado:', decodedText);
 
       try {
@@ -2649,6 +2653,7 @@ async function procesarInvitado(email) {
       }
 
       const mensaje = `✅ Entrada registrada: ${alias} (${emailSolo}) - Rol: ${usuario.role} - A las ${hora}`;
+      mostrarAnimacionExito();    
       document.getElementById('resultado').innerText = mensaje;
       document.getElementById('resultado').style.color = 'green';
       console.log('✅ Entrada guardada en el servidor');
@@ -2657,6 +2662,7 @@ async function procesarInvitado(email) {
       document.getElementById('resultado').style.color = 'red';
     }
   } catch (err) {
+    mostrarAnimacionError();  
     document.getElementById('resultado').innerText = '❌ Error al registrar entrada: ' + err.message;
     document.getElementById('resultado').style.color = 'red';
     throw err;
