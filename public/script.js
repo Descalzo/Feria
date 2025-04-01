@@ -2857,7 +2857,7 @@ function mostrarAnimacionExito() {
     icon.textContent = '✔️'; // V de éxito
     text.textContent = '¡Pago Aceptado!';
     animationContainer.style.display = 'block';
-    
+    console.log(`Aqui he entrado`);
     setTimeout(() => {
         animationContainer.style.display = 'none'; // Ocultar la animación después de un tiempo
     }, 2000);
