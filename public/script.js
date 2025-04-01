@@ -2036,8 +2036,9 @@ async function iniciarPollingPago() {
             <p>Fecha: ${formatearFecha(transaccionConfirmada.date)}</p>
           </div>
         `;
-	mostrarAnimacionExito();
+	
         detenerPollingPago();
+	mostrarAnimacionExito();      
         pendingTransactionId = null;
         pendingCustomId = null;
       } else {
