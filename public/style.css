@@ -538,6 +538,13 @@ button:hover::after {
   box-shadow: 0 7px 20px rgba(243, 156, 18, 0.4);
 }
 
+#login-form  {
+  position: absolute;
+  top: 30%;
+  right:10%;
+  left:12%;	
+}
+
 /* Tablas con diseño mejorado */
 table {
   width: 100%;
