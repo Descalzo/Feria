@@ -21,7 +21,7 @@ function mostrarMensaje(tipo, texto) {
     contenedor.id = 'notificaciones';
     contenedor.style.position = 'fixed';
     contenedor.style.top = '10%';
-    contenedor.style.right = '160px';
+    contenedor.style.right = '50%';
     contenedor.style.zIndex = '9999';
     contenedor.style.maxWidth = '300px';
     document.body.appendChild(contenedor);
