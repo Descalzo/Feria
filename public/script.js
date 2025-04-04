@@ -1898,20 +1898,6 @@ document.getElementById('formulario-camarero-form').addEventListener('submit', a
 document.getElementById('add-invited-form').addEventListener('submit', async function(e) {
   e.preventDefault();
 
-  const email = formulario.email.value;
-  const alias = formulario.alias.value;
-
-  const invitados = users.filter(u => u.parent === currentUser.email && u.role === 'invitado');
-  if (invitados.length >= 4 && currentUser.role !== 'familiar') {
-    
-	mostrarMensaje("advertencia", "Se alcanzó el máximo de invitados directos.");
-    return;
-  }
-  if (usuarioYaExiste(email, alias)) {
-    mostrarMensaje("advertencia", "El usuario ya existe.");
-    return;
-  }
-
   const email = document.getElementById('new-invited-email').value;
   const alias = document.getElementById('new-invited-alias').value;
   const password = document.getElementById('new-invited-password').value;
@@ -1919,6 +1905,19 @@ document.getElementById('add-invited-form').addEventListener('submit', async fun
   const parent = localStorage.getItem('parentForInvite') || currentUser.email;
 
   const nuevoUsuario = {  email, password, alias, role, balance: 0, parent };
+
+  const invitados = users.filter(u => u.parent === currentUser.email && u.role === 'invitado');
+  if (invitados.length >= 4 && currentUser.role !== 'familiar') {
+    
+	mostrarMensaje("advertencia", "Se alcanzó el máximo de invitados directos.");
+    return;
+  }
+
+  if (usuarioYaExiste(email, alias)) {
+    mostrarMensaje("advertencia", "El usuario ya existe.");
+    return;
+  }
+
   users.push(nuevoUsuario);
 	
   await guardarUsuarioEnServidor(nuevoUsuario);
