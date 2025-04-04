@@ -522,7 +522,7 @@ button:hover::after {
 
 #login-form {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   background: transparent;
   border-radius: 16px;
   padding: 80px;
