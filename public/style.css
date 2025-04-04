@@ -511,7 +511,7 @@ button:hover::after {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-
+  overflow-x: hidden;
 }
 
 #login-container::before, #register-container::before {
