@@ -522,7 +522,7 @@ button:hover::after {
 
 #login-form {
   position: relative;
-  top: -20px; /* súbelo un poco si quieres */
+  top: -60px; /* súbelo un poco si quieres */
   padding: 30px 20px;
 }
 
