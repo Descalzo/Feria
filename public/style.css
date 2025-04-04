@@ -26,7 +26,7 @@ body {
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 400px;
-  height: calc(100vh - 10px); /* Ocupa el alto disponible menos el padding del body */
+  height: calc(90vh - 10px); /* Ocupa el alto disponible menos el padding del body */
   display: none;
   transition: all 0.4s ease;
   position: relative;
