@@ -10,6 +10,7 @@ body {
   background: linear-gradient(135deg, #FEF9E7 0%, #F8F2DC 100%);
   height: 100vh; /* Fija la altura al 100% de la ventana del dispositivo */
   overflow-y: hidden; /* Desactiva el desplazamiento vertical */
+  overflow-x: hidden;
   padding: 5px; /* Reduce el padding para aprovechar más espacio */
   display: flex;
   flex-direction: column;
