@@ -493,13 +493,8 @@ button:hover::after {
 
 /* Login y Registro */
 #login-container, #register-container {
-  background-image: url('https://picsum.photos/400/300');
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  padding: 30px;
-  position: relative;
-  overflow: hidden;	
+  backgrond-image: url('/img/login.png');
+
 }
 
 #login-container::before, #register-container::before {
