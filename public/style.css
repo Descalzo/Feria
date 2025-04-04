@@ -523,13 +523,13 @@ button:hover::after {
 #login-form {
   width: 100%;
   max-width: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
   background: transparent;
   box-shadow: none;
   border: none;
-  padding: 25px;
 
-  display: flex;
-  flex-direction: column;
 }
 
 
