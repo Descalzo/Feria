@@ -40,11 +40,11 @@ app.post('/procesarTransaccionPendientePorCustomId/:customId', async (req, res) 
     const transaccionPendiente = await TransaccionPendiente.findOne({ customId });
 
     if (!transaccionPendiente) {
-      return res.status(404).json({ error: 'Transacción no encontrada por customId' });
+//      return res.status(404).json({ error: 'Transacción no encontrada por customId' });
     }
 
     if (transaccionPendiente.estado !== 'pendiente') {
-      return res.status(400).json({ error: 'Transacción ya procesada' });
+//      return res.status(400).json({ error: 'Transacción ya procesada' });
     }
 
     const fecha = new Date();
