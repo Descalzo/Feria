@@ -322,56 +322,55 @@ button:hover::after {
 /* FONDOS PERSONALIZADOS PARA .container SEGÚN ROL */
 .role-socio .container {
   background: rgba(52, 152, 219, 0.2);
-  background-image: url('/img/socio.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-
 .role-familiar .container {
   background: rgba(46, 204, 113, 0.2);
-  background-image: url('/img/familiar.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-
 .role-invitado .container {
   background: rgba(149, 165, 166, 0.2);
-  background-image: url('/img/invitado.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-
 .role-portero .container {
   background: rgba(231, 76, 60, 0.2);
-  background-image: url('/img/portero.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-
-.role-restaurante .container,
+.role-restaurante .container {
+  background: rgba(243, 156, 18, 0.3);
+}
 .role-camarero .container {
   background: rgba(243, 156, 18, 0.3);
-  background-image: url('/img/restaurante.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
+
+/* Añadir lunares blancos al fondo por rol */
+.role-socio .container,
+.role-familiar .container,
+.role-invitado .container,
+.role-portero .container,
+.role-restaurante .container,
+.role-camarero .container,
 .role-admin .container {
-  background: rgba(243, 156, 18, 0.3);
-  background-image: url('/img/admin.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-image:
+    url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>\
+        <circle cx='30' cy='40' r='12' fill='white'/>\
+        <circle cx='90' cy='20' r='16' fill='white'/>\
+        <circle cx='150' cy='80' r='10' fill='white'/>\
+        <circle cx='70' cy='130' r='14' fill='white'/>\
+        <circle cx='120' cy='170' r='9' fill='white'/>\
+        <circle cx='180' cy='50' r='13' fill='white'/>\
+      </svg>");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 
-
-
+/* Fondos con color base + transparencia */
+.role-socio .container { background-color: rgba(52, 152, 219, 0.2); }
+.role-familiar .container { background-color: rgba(46, 204, 113, 0.2); }
+.role-invitado .container { background-color: rgba(149, 165, 166, 0.2); }
+.role-portero .container { background-color: rgba(231, 76, 60, 0.2); }
+.role-restaurante .container,
+.role-camarero .container { background-color: rgba(243, 156, 18, 0.3); }
+.role-admin .container { background-color: rgba(241, 196, 15, 0.3); }
 
 
 
