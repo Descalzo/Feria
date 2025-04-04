@@ -508,23 +508,21 @@ button:hover::after {
 
 /* Login y Registro */
 #login-container {
- 
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la pantalla */
   background-image: url('/img/login.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 30px;
   position: relative;
-  overflow-x: hidden;
 }
 
 
 #login-form {
-  width: 100%;
-  max-width: 400px;
-  background: transparent;
-  border-radius: 16px;
+  position: relative;
+  top: -20px; /* súbelo un poco si quieres */
   padding: 30px 20px;
 }
 
