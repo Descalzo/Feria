@@ -21,9 +21,11 @@ function mostrarMensaje(tipo, texto) {
     contenedor.id = 'notificaciones';
     contenedor.style.position = 'fixed';
     contenedor.style.top = '10%';
-    contenedor.style.right = '50%';
+    contenedor.style.left = '50%'; // centrar desde la izquierda
+    contenedor.style.transform = 'translateX(-50%)'; // desplazar la mitad del ancho hacia la izquierda
     contenedor.style.zIndex = '9999';
-    contenedor.style.maxWidth = '300px';
+    contenedor.style.maxWidth = '90%'; // para móviles
+    contenedor.style.width = '300px'; // ancho máximo
     document.body.appendChild(contenedor);
   }
 
