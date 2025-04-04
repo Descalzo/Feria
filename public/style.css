@@ -552,11 +552,29 @@ button:hover::after {
   box-shadow: 0 7px 20px rgba(243, 156, 18, 0.4);
 }
 
-#login-form  {
-  position: absolute;
-  top: 33%;
-  right:10%;
-  left:12%;	
+#login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-image: url('/img/login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#login-form {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
 }
 
 /* Tablas con diseño mejorado */
