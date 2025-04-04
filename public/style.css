@@ -522,7 +522,7 @@ button:hover::after {
 
 #login-form {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   background: transparent;
   border-radius: 16px;
   padding: 80px;
@@ -534,13 +534,13 @@ button:hover::after {
   /* Reduce el desplazamiento */
   top: -30px;
   left: -30px;
-  width: 60px;
+  width: 120px;
   height: 60px;
 }
 #login-container::after, #register-container::after {
   bottom: -30px;
   right: -30px;
-  width: 60px;
+  width: 120px;
   height: 60px;
 }
 
