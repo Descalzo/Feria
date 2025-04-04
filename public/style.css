@@ -516,7 +516,7 @@ button:hover::after {
   background-position: center;
   padding: 30px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 
@@ -530,30 +530,20 @@ button:hover::after {
 
 
 
-#login-container::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #F39C12, #D35400);
-
-  opacity: 0.1;
+#login-container::before, #register-container::before {
+  /* Reduce el desplazamiento */
+  top: -30px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+}
+#login-container::after, #register-container::after {
+  bottom: -30px;
+  right: -30px;
+  width: 60px;
+  height: 60px;
 }
 
-#login-container::after {
-  content: '';
-  position: absolute;
-  bottom: -50px;
-  right: -50px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #F39C12, #D35400);
-  opacity: 0.1;
-}
 
 #login-container button button {
   background: linear-gradient(135deg, #F39C12, #D35400);
