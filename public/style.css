@@ -494,6 +494,9 @@ button:hover::after {
 /* Login y Registro */
 #login-container, #register-container {
   background-image: url('/img/login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
 }
 
