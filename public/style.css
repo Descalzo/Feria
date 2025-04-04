@@ -8,7 +8,7 @@
 body {
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #FEF9E7 0%, #F8F2DC 100%);
-  height: 94vh; /* Fija la altura al 100% de la ventana del dispositivo */
+  height: 95vh; /* Fija la altura al 100% de la ventana del dispositivo */
   overflow-y: hidden; /* Desactiva el desplazamiento vertical */
   overflow-x: hidden;
   padding: 5px; /* Reduce el padding para aprovechar más espacio */
@@ -26,7 +26,7 @@ body {
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 400px;
-  height: calc(90vh - 10px); /* Ocupa el alto disponible menos el padding del body */
+  height: calc(95vh - 10px); /* Ocupa el alto disponible menos el padding del body */
   display: none;
   transition: all 0.4s ease;
   position: relative;
