@@ -1898,6 +1898,9 @@ document.getElementById('formulario-camarero-form').addEventListener('submit', a
 document.getElementById('add-invited-form').addEventListener('submit', async function(e) {
   e.preventDefault();
 
+  const email = formulario.email.value;
+  const alias = formulario.alias.value;
+
   const invitados = users.filter(u => u.parent === currentUser.email && u.role === 'invitado');
   if (invitados.length >= 4 && currentUser.role !== 'familiar') {
     
