@@ -505,7 +505,7 @@ button:hover::after {
 .role-admin #content button:not(.menu-grid button) { background: linear-gradient(135deg, #F1C40F, #D4AC0D); color: #333; }
 
 /* Login y Registro */
-#login-container, #register-container {
+#login-container {
 
   display: flex;
   justify-content: center;
@@ -533,7 +533,7 @@ button:hover::after {
 }
 
 
-#login-container::before, #register-container::before {
+#login-container::before {
   content: '';
   position: absolute;
   top: -50px;
@@ -546,7 +546,7 @@ button:hover::after {
   opacity: 0.1;
 }
 
-#login-container::after, #register-container::after {
+#login-container::after {
   content: '';
   position: absolute;
   bottom: -50px;
@@ -558,7 +558,7 @@ button:hover::after {
   opacity: 0.1;
 }
 
-#login-container button, #register-container button {
+#login-container button button {
   background: linear-gradient(135deg, #F39C12, #D35400);
   color: white;
   border-radius: 30px;
@@ -567,7 +567,7 @@ button:hover::after {
   font-size: 1.1em;
 }
 
-#login-container button:hover, #register-container button:hover {
+#login-container button:hover button:hover {
   box-shadow: 0 7px 20px rgba(243, 156, 18, 0.4);
 }
 
