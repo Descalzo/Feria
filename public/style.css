@@ -67,7 +67,7 @@ h2 {
   position: relative; /* ya no necesitas absolute si solo es para centrar */
   top: auto;
   left: auto;
-  margin-top: 20px;
+  margin-top: 120px;
 }
 
 h2::after {
