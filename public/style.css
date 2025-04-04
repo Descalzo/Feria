@@ -525,7 +525,7 @@ button:hover::after {
   max-width: 400px;
   background: transparent;
   border-radius: 16px;
-  padding: 80px;
+  padding: 30px 20px;
 }
 
 
@@ -534,13 +534,13 @@ button:hover::after {
   /* Reduce el desplazamiento */
   top: -30px;
   left: -30px;
-  width: 120px;
+  width: 60px;
   height: 60px;
 }
 #login-container::after, #register-container::after {
   bottom: -30px;
   right: -30px;
-  width: 120px;
+  width: 60px;
   height: 60px;
 }
 
