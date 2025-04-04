@@ -603,6 +603,7 @@ tr:last-child td {
   align-items: center;
   justify-content: center;
   border: 5px solid rgba(255,255,255,0.5);
+  z-index: 5;
 }
 
 #user-role-display {
@@ -1247,3 +1248,46 @@ tr:last-child td {
 }
 
 
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  20% {
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+
+.notificacion-animada {
+  animation: fadeInOut 3s ease-in forwards;
+}
+
+
+#notificacion-entrada {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Otros estilos necesarios */
+}
+
+#notificacion-mensaje {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Otros estilos necesarios */
+}
