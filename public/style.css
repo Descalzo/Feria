@@ -321,25 +321,46 @@ button:hover::after {
 
 /* FONDOS PERSONALIZADOS PARA .container SEGÚN ROL */
 .role-socio .container {
-  background: rgba(52, 152, 219, 0.2);
+  background-image: url('/img/socio.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 .role-familiar .container {
-  background: rgba(46, 204, 113, 0.2);
+  background-image: url('/img/familiar.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 .role-invitado .container {
-  background: rgba(149, 165, 166, 0.2);
+  background-image: url('/img/invitado.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 .role-portero .container {
-  background: rgba(231, 76, 60, 0.2);
+  background-image: url('/img/portero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.role-restaurante .container {
-  background: rgba(243, 156, 18, 0.3);
-}
+
+.role-restaurante .container,
 .role-camarero .container {
-  background: rgba(243, 156, 18, 0.3);
+  background-image: url('/img/restaurante.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 .role-admin .container {
-  background: rgba(241, 196, 15, 0.3);
+  background-image: url('/img/admin.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
