@@ -54,7 +54,8 @@ h2 {
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 1.6em;
-  position: relative;
+  position: absolute;
+  top: 10%
   padding-bottom: 10px;
 }
 
@@ -540,7 +541,7 @@ button:hover::after {
 
 #login-form  {
   position: absolute;
-  top: 35%;
+  top: 33%;
   right:10%;
   left:12%;	
 }
