@@ -1897,6 +1897,10 @@ document.getElementById('add-invited-form').addEventListener('submit', async fun
 	mostrarMensaje("advertencia", "Se alcanzó el máximo de invitados directos.");
     return;
   }
+  if (usuarioYaExiste(email, alias)) {
+    mostrarMensaje("advertencia", "El usuario ya existe.");
+    return;
+  }
 
   const email = document.getElementById('new-invited-email').value;
   const alias = document.getElementById('new-invited-alias').value;
@@ -1906,6 +1910,11 @@ document.getElementById('add-invited-form').addEventListener('submit', async fun
 
   const nuevoUsuario = {  email, password, alias, role, balance: 0, parent };
   users.push(nuevoUsuario);
+if (usuarioYaExiste(email, alias)) {
+  mostrarMensaje("advertencia", "El usuario ya existe.");
+  return;
+}
+	
   await guardarUsuarioEnServidor(nuevoUsuario);
 
   
@@ -2907,4 +2916,9 @@ function mostrarNotificacionEntrada(texto) {
 
   setTimeout(() => contenedor.remove(), 2000);
   setTimeout(() => yaProcesado = false, 2000);
+}
+
+
+function usuarioYaExiste(email, alias) {
+  return users.some(u => u.email === email || u.alias === alias);
 }
