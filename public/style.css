@@ -5,14 +5,11 @@
   padding: 0;
 }
 
-html, body {
-  height: 100vh;
-}
 
 body {
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #FEF9E7 0%, #F8F2DC 100%);
-  
+  height: 100vh;
   overflow-y: hidden; /* Desactiva el desplazamiento vertical */
   overflow-x: hidden;
   margin: 0;
@@ -21,7 +18,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><path fill="rgba(233, 174, 33, 0.05)" d="M0 0h50v50H0z"/><path fill="rgba(233, 174, 33, 0.05)" d="M50 50h50v50H50z"/></svg>');
   background-size: 40px 40px;
 }
 
@@ -512,7 +508,7 @@ button:hover::after {
 
 /* Login y Registro */
 #login-container {
-  display: flex;
+ 
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -528,9 +524,9 @@ button:hover::after {
 }
 
 #login-container.active {
-  display: flex;
+  
   opacity: 1;
-  transform: translateY(0);
+ 
 }  
 
 
