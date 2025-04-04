@@ -50,14 +50,23 @@ body {
 /* Encabezados y títulos */
 h2 {
   text-align: center;
-  color: #FFFFFF;
+  color: #D35400;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.6em;
+  position: relative;
+  padding-bottom: 10px;
   
+}
+
+.titulo-principal {
+  text-align: center;
+  color: #FFFFFF;
   font-weight: 700;
   font-size: 1.6em;
   position: absolute;
   top: 15%;
   left: 28%;
-  
 }
 
 h2::after {
