@@ -1860,6 +1860,13 @@ document.getElementById('add-familiar-form').addEventListener('submit', async fu
   const parent = currentUser.email;
   const role = 'familiar';
 
+  const yaExiste = users.some(u => u.email === email || u.alias === alias);
+  
+if (usuarioYaExiste(email, alias)) {
+    mostrarMensaje("advertencia", "El usuario ya existe.");
+    return;
+  }
+	
   const nuevoUsuario = {  email, password, alias, role, balance: 0, parent };
   users.push(nuevoUsuario);
   await guardarUsuarioEnServidor(nuevoUsuario);
@@ -1910,13 +1917,8 @@ document.getElementById('add-invited-form').addEventListener('submit', async fun
 
   const nuevoUsuario = {  email, password, alias, role, balance: 0, parent };
   users.push(nuevoUsuario);
-if (usuarioYaExiste(email, alias)) {
-  mostrarMensaje("advertencia", "El usuario ya existe.");
-  return;
-}
 	
   await guardarUsuarioEnServidor(nuevoUsuario);
-
   
   mostrarMensaje("exito", "Invitado añadido correctamente.");
   this.reset();
