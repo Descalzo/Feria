@@ -509,25 +509,17 @@ button:hover::after {
 /* Login y Registro */
 #login-container {
  
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
+
   background-image: url('/img/login.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 0;
+
   position: relative;
   overflow: hidden;
 }
 
-#login-container.active {
-  
-  opacity: 1;
- 
-}  
+
 
 
 
