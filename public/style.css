@@ -493,7 +493,7 @@ button:hover::after {
 
 /* Login y Registro */
 #login-container, #register-container {
-  backgrond-image: url('/img/login.png');
+  background-image: url('/img/login.png');
 
 }
 
