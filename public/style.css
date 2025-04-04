@@ -64,9 +64,10 @@ h2 {
   color: #FFFFFF;
   font-weight: 700;
   font-size: 1.6em;
-  position: absolute;
-  top: 15%;
-  left: 28%;
+  position: relative; /* ya no necesitas absolute si solo es para centrar */
+  top: auto;
+  left: auto;
+  margin-top: 20px;
 }
 
 h2::after {
