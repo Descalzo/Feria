@@ -1,10 +1,7 @@
 
 //const SERVER_URL = 'http://192.168.1.231:8080';
-//const SERVER_URL = 'https://5eaa-62-36-29-136.ngrok-free.app';
+//const SERVER_URL = 'https://ba54-62-36-29-136.ngrok-free.app';
 const SERVER_URL = 'https://feria-production.up.railway.app';
-
-
-
 
 
 let users = [];
@@ -23,8 +20,8 @@ function mostrarMensaje(tipo, texto) {
     contenedor = document.createElement('div');
     contenedor.id = 'notificaciones';
     contenedor.style.position = 'fixed';
-    contenedor.style.top = '10px';
-    contenedor.style.right = '10px';
+    contenedor.style.top = '10%';
+    contenedor.style.right = '160px';
     contenedor.style.zIndex = '9999';
     contenedor.style.maxWidth = '300px';
     document.body.appendChild(contenedor);
@@ -40,7 +37,7 @@ function mostrarMensaje(tipo, texto) {
   const { bg, icono } = estilos[tipo] || estilos.info;
 
   const div = document.createElement('div');
-  div.className = `notificacion ${tipo}`;
+  div.className = `notificacion ${tipo} notificacion-animada`;
   div.innerHTML = `${icono} <strong>${texto}</strong>`;
   div.style.padding = '10px 15px';
   div.style.marginBottom = '10px';
@@ -48,8 +45,27 @@ function mostrarMensaje(tipo, texto) {
   div.style.color = 'white';
   div.style.background = bg;
   div.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-  div.style.animation = 'fadeInOut 3s forwards';
+  div.style.animation = 'none';
+  div.offsetHeight; // fuerza reflow
+  div.style.opacity = '0';
+  div.style.transform = 'scale(0.8)';
+  div.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
 
+    setTimeout(() => {
+	  div.style.opacity = '1';
+	  div.style.transform = 'scale(1.05)';
+	}, 10);
+
+	setTimeout(() => {
+	  div.style.transform = 'scale(1)';
+	}, 300);
+
+	setTimeout(() => {
+	  div.style.opacity = '0';
+	  div.style.transform = 'scale(0.8)';
+	}, 2500);
+
+    contenedor.innerHTML = '';
   contenedor.appendChild(div);
   setTimeout(() => div.remove(), 3000);
 }
@@ -202,12 +218,6 @@ document.getElementById('login-form')?.addEventListener('submit', (e) => {
   }
 });
 
-
-// Llamadas iniciales al cargar la web
-window.addEventListener('DOMContentLoaded', () => {
-  cargarUsuariosDesdeServidor();
-  cargarTransaccionesDesdeServidor();
-});
 
 
 // Ejemplo: añadir un nuevo usuario
@@ -454,34 +464,34 @@ async function generarEsquemaRelaciones() {
   });
 
 
-// Restaurante y camareros como hijos
-const restaurante = users.find(u => u.role === 'restaurante');
-if (restaurante) {
-  const padre = users.find(u => u.email === restaurante.parent);
-  const registradoPor = padre ? padre.alias : restaurante.parent || '';
-  const bloqueRestaurante = crearBloqueUsuario(restaurante.alias, iconos.restaurante, colorRoles.restaurante, 'restaurante', 0, registradoPor);
+	// Restaurante y camareros como hijos
+	const restaurante = users.find(u => u.role === 'restaurante');
+	if (restaurante) {
+	  const padre = users.find(u => u.email === restaurante.parent);
+	  const registradoPor = padre ? padre.alias : restaurante.parent || '';
+	  const bloqueRestaurante = crearBloqueUsuario(restaurante.alias, iconos.restaurante, colorRoles.restaurante, 'restaurante', 0, registradoPor);
 
-  // Camareros dependientes del restaurante
-  const camareros = users.filter(u => u.role === 'camarero');
-  camareros.forEach(camarero => {
-  const padre = users.find(u => u.email === camarero.parent || u.alias === camarero.parent);
-  const registradoPor = padre ? padre.alias : camarero.parent;
-  const camareroDiv = crearBloqueUsuario(camarero.alias, iconos.camarero, colorRoles.camarero, 'camarero', 20, registradoPor);
+	  // Camareros dependientes del restaurante
+	  const camareros = users.filter(u => u.role === 'camarero');
+	  camareros.forEach(camarero => {
+	  const padre = users.find(u => u.email === camarero.parent || u.alias === camarero.parent);
+	  const registradoPor = padre ? padre.alias : camarero.parent;
+	  const camareroDiv = crearBloqueUsuario(camarero.alias, iconos.camarero, colorRoles.camarero, 'camarero', 20, registradoPor);
 
-    bloqueRestaurante.appendChild(camareroDiv);
-  });
+		bloqueRestaurante.appendChild(camareroDiv);
+	  });
 
-  contenedor.appendChild(bloqueRestaurante);
-}
+	  contenedor.appendChild(bloqueRestaurante);
+	}
 
-// Porteros al final
-const porteros = users.filter(u => u.role === 'portero');
-porteros.forEach(portero => {
-  const padre = users.find(u => u.email === portero.parent);
-  const registradoPor = padre ? padre.alias : portero.parent || '';
-  const bloque = crearBloqueUsuario(portero.alias, iconos.portero, colorRoles.portero, 'portero', 0, registradoPor);
-  contenedor.appendChild(bloque);
-});
+	// Porteros al final
+	const porteros = users.filter(u => u.role === 'portero');
+	porteros.forEach(portero => {
+	  const padre = users.find(u => u.email === portero.parent);
+	  const registradoPor = padre ? padre.alias : portero.parent || '';
+	  const bloque = crearBloqueUsuario(portero.alias, iconos.portero, colorRoles.portero, 'portero', 0, registradoPor);
+	  contenedor.appendChild(bloque);
+	});
 
 }
 
@@ -638,7 +648,7 @@ async function mostrarOpcion(id) {
     case 'recarga-page':
       cargarSociosParaRecarga();
       break;
-	case 'camarero-page':
+	case 'camarero-page':  //supongo q podremos crear una funcion con esto y llamarla desde aqui como el resto de case
       if (currentUser.role !== 'camarero') {
         
 		mostrarMensaje("error", "Acceso no permitido.");
@@ -1136,7 +1146,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 	if (currentUser.role === 'invitado') {
 	  showEntryQR();
 	  agregarBotonAtras('entry-qr-page');
-	} else if (currentUser.role === 'portero') {
+	} else if (currentUser.role === 'portero') { //supongo q este else lo podemos quitar
 	  generarMenu();
 	  mostrarContenedor('menu-container'); 
 	} else {
@@ -1784,12 +1794,15 @@ async function cargarInvitadosAgregados() {
 
   container.innerHTML = html;
 }
+
 // Evento para actualizar el monedero al entrar a su vista
 document.getElementById('wallet-page')?.addEventListener('click', cargarWallet);
+
 //document.getElementById('chat-page')?.addEventListener('click', cargarMensajesChat);
 document.getElementById('admin-page')?.addEventListener('click', async () => {
   await cargarAdminUsuarios();
 });
+
 document.getElementById('payments-page')?.addEventListener('click', () => {
   // Opcional: resetear la vista de pagos
   document.getElementById('payment-qr').innerHTML = '';
@@ -1825,9 +1838,6 @@ document.getElementById('add-user-form').addEventListener('submit', async functi
   navigationStack = ['menu-container'];
   mostrarContenedor('admin-menu', false);
 });
-
-
-
 
 
 
@@ -2028,29 +2038,27 @@ async function iniciarPollingPago() {
 
       if (transaccionConfirmada) {
         const restaurante = users.find(u => u.email === transaccionConfirmada.to);
-
         qrContainer.innerHTML = `
           <div style="text-align: center; color: green; padding: 20px;">
             <h3>✅ Pago confirmado</h3>
             <p>Has pagado ${formatearEuros(transaccionConfirmada.amount)} a ${'Restaurante'}</p>
             <p>Fecha: ${formatearFecha(transaccionConfirmada.date)}</p>
           </div>
-        `;
-	
+        `;    
+		mostrarNotificacionEntrada("✅");
         detenerPollingPago();
-	    
+		
         pendingTransactionId = null;
         pendingCustomId = null;
       } else {
         console.log(`⏳ Aún no se ha encontrado la transacción con customId ${pendingCustomId}`);
       }
     } catch (err) {
-      
+	  mostrarNotificacionEntrada("❌");
       console.error('❌ Error en polling por customId:', err);
     }
   }, 2000);
 }
-
 
 
 function detenerPollingPago() {
@@ -2072,6 +2080,7 @@ async function cargarTransaccionesDesdeServidor() {
     transactions = [];
   }
 }
+
 // Nueva función para cargar transacciones pendientes
 async function cargarTransaccionesPendientesDesdeServidor() {
   try {
@@ -2096,15 +2105,9 @@ async function actualizarTransaccionesPendientesEnServidor(transaccionesPendient
   }
 }
 
-function detenerPollingPago() {
-  if (paymentPollingInterval) {
-    clearInterval(paymentPollingInterval);
-    paymentPollingInterval = null;
-    console.log('⏹️ Polling de pago detenido');
-  }
-}
 
-document.getElementById('payment-form').addEventListener('submit', procesarPago);
+
+
 
 
 
@@ -2121,6 +2124,27 @@ function cargarSociosParaRecarga() {
     select.appendChild(option);
   });
 }
+
+
+
+async function actualizarUsuarioEnServidor(usuario) {
+  try {
+    const res = await fetch(`${SERVER_URL}/usuarios/email/${usuario.email}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(usuario)
+    });
+
+    if (!res.ok) throw new Error(`Error al actualizar usuario: ${res.status}`);
+    return await res.json();
+  } catch (error) {
+    console.error('Error actualizando usuario:', error);
+    throw error;
+  }
+}
+
+
+document.getElementById('payment-form').addEventListener('submit', procesarPago);
 
 // Función para procesar la recarga (para rol restaurante)
 document.getElementById('recarga-form').addEventListener('submit', async function(e) {
@@ -2179,27 +2203,6 @@ document.getElementById('recarga-form').addEventListener('submit', async functio
 	mostrarMensaje("error", "Hubo un error guardando en el servidor: " + error);
   }
 });
-
-
-async function actualizarUsuarioEnServidor(usuario) {
-  try {
-    const res = await fetch(`${SERVER_URL}/usuarios/email/${usuario.email}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(usuario)
-    });
-
-    if (!res.ok) throw new Error(`Error al actualizar usuario: ${res.status}`);
-    return await res.json();
-  } catch (error) {
-    console.error('Error actualizando usuario:', error);
-    throw error;
-  }
-}
-
-
-
-
 
 
 document.getElementById('tickets-page')?.addEventListener('click', () => {
@@ -2346,6 +2349,7 @@ async function eliminarEvento(id) {
       const errorText = await res.text();
       throw new Error(`Error al eliminar evento: ${res.status} - ${errorText}`);
     }
+	mostrarMensaje("exito", "Evento eliminado correctamente");
     console.log(`Evento con ID ${id} eliminado correctamente`);
     await cargarEventos(); // Recargar la lista después de eliminar
   } catch (err) {
@@ -2452,7 +2456,7 @@ async function cargarTiempo() {
   }
 }
 
-
+// Llamadas iniciales al cargar la web
 window.addEventListener('DOMContentLoaded', () => {
   cargarUsuariosDesdeServidor();
   cargarTransaccionesDesdeServidor();
@@ -2548,7 +2552,6 @@ function iniciarScanner() {
       }
 
       isProcessing = true;
-     
       console.log('✅ QR detectado:', decodedText);
 
       try {
@@ -2593,8 +2596,12 @@ function detenerScanner() {
   }
 }
 
+let yaProcesado = false;
 
 async function procesarInvitado(email) {
+	
+  if (yaProcesado) return; // Evita duplicados
+    yaProcesado = true;
   try {
     const res = await fetch(`${SERVER_URL}/usuarios`);
     if (!res.ok) throw new Error(`Error al cargar usuarios: ${res.status}`);
@@ -2611,6 +2618,7 @@ async function procesarInvitado(email) {
     } catch (err) {
       document.getElementById('resultado').innerText = '❌ QR no válido. No se puede decodificar.';
       document.getElementById('resultado').style.color = 'red';
+	  mostrarNotificacionEntrada("❌");
       return;
     }
 
@@ -2651,18 +2659,21 @@ async function procesarInvitado(email) {
         const texto = await post.text();
         throw new Error(`Fallo al guardar entrada: ${texto}`);
       }
-
-      const mensaje = `✅ Entrada registrada: ${alias} (${emailSolo}) - Rol: ${usuario.role} - A las ${hora}`;
-         
+		
+      //const mensaje = `✅ Entrada registrada: ${alias} - Rol: ${usuario.role} - A las ${hora}`;
+	  detenerScanner();
+	  mostrarNotificacionEntrada("✅");
       document.getElementById('resultado').innerText = mensaje;
       document.getElementById('resultado').style.color = 'green';
+	 
       console.log('✅ Entrada guardada en el servidor');
     } else {
       document.getElementById('resultado').innerText = `❌ Rol no permitido para entrada: ${usuario.role} (${emailSolo})`;
       document.getElementById('resultado').style.color = 'red';
     }
   } catch (err) {
-      
+	detenerScanner();  
+	mostrarNotificacionEntrada("❌");
     document.getElementById('resultado').innerText = '❌ Error al registrar entrada: ' + err.message;
     document.getElementById('resultado').style.color = 'red';
     throw err;
@@ -2684,6 +2695,7 @@ async function procesarPagoEscaneado(qrText) {
     } catch (err) {
       document.getElementById('resultado').innerText = '❌ QR no válido';
       document.getElementById('resultado').style.color = 'red';
+	  mostrarNotificacionEntrada("❌");
       return;
     }
 
@@ -2705,16 +2717,17 @@ async function procesarPagoEscaneado(qrText) {
       document.getElementById('resultado').style.color = 'red';
       return;
     }
-    
-   
+
     document.getElementById('resultado').innerText = `✅ Pago de ${formatearEuros(data.pago.amount)} confirmado`;
+	mostrarNotificacionEntrada("✅");
     document.getElementById('resultado').style.color = 'green';
 
     await cargarUsuariosDesdeServidor();
     console.log('✅ Transacción procesada correctamente:', data);
 
-  }  catch (err) {
+  } catch (err) {
     document.getElementById('resultado').innerText = '❌ Error procesando pago';
+	mostrarNotificacionEntrada("❌");
     document.getElementById('resultado').style.color = 'red';
     console.error('❌ Error procesando pago:', err);
   }
@@ -2849,4 +2862,47 @@ async function actualizarIconoTiempoSVG() {
 }
 
 
+function mostrarNotificacionEntrada(texto) {
+  let contenedor = document.getElementById('notificacion-entrada');
 
+  if (!contenedor) {
+    contenedor = document.createElement('div');
+    contenedor.id = 'notificaciones';
+    contenedor.style.position = 'fixed';
+    contenedor.style.top = '40%';
+    contenedor.style.left = '50%';
+    contenedor.style.transform = 'translate(-50%, -50%) scale(0.2)'; // centrar y escalar
+    contenedor.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+    contenedor.style.opacity = '0';
+    contenedor.style.zIndex = '9999';
+    document.body.appendChild(contenedor);
+  }
+
+  contenedor.innerHTML = `<div style="
+    font-size: 4rem;
+
+    color: white;
+;
+    text-align: center;
+  "><strong>${texto}</strong></div>`;
+
+  // Mostrar
+  setTimeout(() => {
+    contenedor.style.opacity = '1';
+    contenedor.style.transform = 'translate(-50%, -50%) scale(1.1)';
+  }, 10);
+
+  // Rebote suave
+  setTimeout(() => {
+    contenedor.style.transform = 'translate(-50%, -50%) scale(1)';
+  }, 400);
+
+  // Desaparecer
+  setTimeout(() => {
+    contenedor.style.opacity = '0';
+    contenedor.style.transform = 'translate(-50%, -50%) scale(0.2)';
+  }, 2000);
+
+  setTimeout(() => contenedor.remove(), 2000);
+  setTimeout(() => yaProcesado = false, 2000);
+}
