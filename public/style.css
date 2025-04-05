@@ -785,12 +785,23 @@ tr:last-child td {
     max-height: 350px; /* Ajustado para que quepa en la pantalla */
   }
 
-    #login-container {
+  #login-container {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top center;
-    background-color: #f8f2dc; /* o un color similar al fondo de la imagen */
+    background-color: #f8f2dc; /* opcional, por si sobra espacio */
+    min-height: 100vh; /* hace que ocupe toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* o center si quieres centrar el formulario */
+    padding-top: 30px; /* ajusta según dónde quieras el login-form */
   }
+
+  #login-form {
+    margin-top: 0; /* evita que se baje demasiado en móvil */
+  }
+
 }
 
 
