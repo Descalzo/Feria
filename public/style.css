@@ -752,7 +752,7 @@ tr:last-child td {
 
 
 /* Ajuste para pantallas móviles */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   body {
     padding: 5px;
   }
@@ -783,6 +783,13 @@ tr:last-child td {
   }
   #wallet-transactions {
     max-height: 350px; /* Ajustado para que quepa en la pantalla */
+  }
+
+    #login-container {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #f8f2dc; /* o un color similar al fondo de la imagen */
   }
 }
 
