@@ -526,7 +526,7 @@ button:hover::after {
   background: transparent;
   border-radius: 16px;
   padding: 40px 20px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 
@@ -794,7 +794,7 @@ tr:last-child td {
   }
 
   #login-form {
-    margin-top: 0; /* evita que se baje demasiado en móvil */
+    margin-top: 50px; /* evita que se baje demasiado en móvil */
   }
 
 }
