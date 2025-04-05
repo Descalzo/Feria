@@ -514,7 +514,7 @@ button:hover::after {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 30px;
+  padding: 40px;
   position: relative;
   overflow-x: hidden;
 }
@@ -791,10 +791,11 @@ tr:last-child td {
     background-repeat: no-repeat;
     background-position: center;
     min-height: 100vh;
+    margin-top: 40px;
   }
 
   #login-form {
-    margin-top: 50px; /* evita que se baje demasiado en móvil */
+    margin-top: 40px; /* evita que se baje demasiado en móvil */
   }
 
 }
